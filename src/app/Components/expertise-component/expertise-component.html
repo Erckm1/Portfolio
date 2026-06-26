@@ -1,0 +1,49 @@
+<section id="expertise" class="py-24 relative">
+  <div class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse at 80% 50%, rgba(139,92,246,0.06) 0%, transparent 60%)"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/8 text-violet-400 text-xs font-medium mb-5">
+        Core Capabilities
+      </div>
+      <h2 class="text-foreground mb-4" style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700">
+        Areas of Expertise
+      </h2>
+      <p class="text-muted-foreground max-w-lg mx-auto">
+        Specialized in delivering end-to-end enterprise solutions from database design to cloud deployment.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      @for (card of cards; track card.title) {
+        <div class="group relative p-7 rounded-2xl border border-[var(--glass-border)] bg-gradient-to-br backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+          [class]="card.gradient + ' ' + card.border">
+          <!-- Inner glow on hover -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.03) 0%, transparent 60%)"></div>
+
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" [class]="card.iconBg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [class]="card.iconColor">
+              @for (path of getIconPaths(card.title); track $index) {
+                <path [attr.d]="path"/>
+              }
+            </svg>
+          </div>
+
+          <h3 class="text-foreground mb-3" style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 600">
+            {{ card.title }}
+          </h3>
+          <p class="text-muted-foreground text-sm leading-relaxed mb-5">{{ card.description }}</p>
+
+          <div class="flex flex-wrap gap-2">
+            @for (tag of card.tags; track tag) {
+              <span class="px-2.5 py-1 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] text-muted-foreground text-xs"
+                style="font-family: var(--font-mono)">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
