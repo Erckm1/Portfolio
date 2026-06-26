@@ -1,0 +1,33 @@
+<section id="about" class="py-24 relative" appInView (inView)="onInView()">
+  <div class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(ellipse at 50% 100%, rgba(99,102,241,0.06) 0%, transparent 60%)"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/8 text-indigo-400 text-xs font-medium mb-5">
+        By the numbers
+      </div>
+      <h2 class="text-foreground mb-4" style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700">
+        Proven Track Record
+      </h2>
+      <p class="text-muted-foreground max-w-lg mx-auto">
+        Years of delivering enterprise-grade software solutions that scale, perform, and endure.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+      @for (stat of stats; track stat.label; let i = $index) {
+        <div class="flex flex-col gap-2 p-7 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-sm hover:border-indigo-500/20 transition-all duration-300 group hover:-translate-y-1">
+          <div class="flex items-baseline gap-0.5">
+            <span class="text-4xl font-bold"
+              style="font-family: var(--font-display); background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              {{ counts()[i] }}
+            </span>
+            <span class="text-2xl font-bold text-indigo-400" style="font-family: var(--font-display)">{{ stat.suffix }}</span>
+          </div>
+          <div class="text-foreground font-semibold text-base" style="font-family: var(--font-display)">{{ stat.label }}</div>
+          <div class="text-muted-foreground text-sm">{{ stat.description }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
